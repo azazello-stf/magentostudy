@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Azazello_DBScript>
+            <version>1.0.1</version>
+        </Azazello_DBScript>
+    </modules>
+    <global>
+        <models>
+            <azazello_dbscript>
+                <class>Azazello_DBScript_Model</class>
+                <resourceModel>azazello_dbscript_resource</resourceModel>
+            </azazello_dbscript>
+            <azazello_dbscript_resource>
+                <class>Azazello_DBScript_Model_Resource</class>
+                <entities>
+                    <ticket>
+                        <table>azazello_dbscript_ticket</table>
+                    </ticket>
+                    <comment>
+                        <table>azazello_dbscript_comment</table>
+                    </comment>
+                </entities>
+            </azazello_dbscript_resource>
+        </models>
+        <resources>
+            <azazello_dbscript_setup>
+                <setup>
+                    <module>Azazello_DBScript</module>
+                </setup>
+            </azazello_dbscript_setup>
+        </resources>
+    </global>
+</config>
