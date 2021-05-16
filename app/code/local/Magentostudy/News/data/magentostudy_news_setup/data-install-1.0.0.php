@@ -33,5 +33,7 @@ $dataRows = array(
 );
 
 foreach($dataRows as $data){
-    $model->setData($data)->setOrigData()->save();
+    Mage::getModel('magentostudy_news/news')
+        ->setData($data)
+        ->save();
 }

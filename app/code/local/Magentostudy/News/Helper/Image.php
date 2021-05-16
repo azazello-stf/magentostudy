@@ -2,7 +2,7 @@
 /**
  * News Image Helper
  *
- * @Bulat
+ * @author Bulat
  */
 class Magentostudy_News_Helper_Image
     extends Mage_Core_Helper_Abstract

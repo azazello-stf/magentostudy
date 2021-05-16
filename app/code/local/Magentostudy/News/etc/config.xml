@@ -74,17 +74,17 @@
             </updates>
         </layout>
     </frontend>
-    <Admin>
+    <admin>
         <routers>
             <adminhtml>
                 <args>
                     <modules>
-                        <Magentostudy_News before="Mage_adminhtml">Magentostudy_News_adminhtml</Magentostudy_News>
+                        <Magentostudy_News before="Mage_adminhtml">Magentostudy_News_Adminhtml</Magentostudy_News>
                     </modules>
                 </args>
             </adminhtml>
         </routers>
-    </Admin>
+    </admin>
     <adminhtml>
         <layout>
             <updates>

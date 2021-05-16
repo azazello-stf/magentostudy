@@ -4,7 +4,7 @@
  *
  * @author Magento
  */
-class Magentostudy_News_Block_item
+class Magentostudy_News_Block_Item
     extends Mage_Core_Block_Template
 {
     /**
