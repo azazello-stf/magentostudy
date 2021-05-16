@@ -54,7 +54,7 @@ class Magentostudy_News_IndexController
 
         $this->loadLayout();
 
-        $itemBlock = $this->getLyout()->getBlock('news.item');
+        $itemBlock = $this->getLayout()->getBlock('news.item');
         if($itemBlock){
             $listBlock = $this->getLayout()->getBlock('news.list');
             if($listBlock){
