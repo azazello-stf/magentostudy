@@ -1,19 +1,18 @@
 <?xml version="1.0"?>
 <!--
 /**
- *
  * Module initial config
  *
- * @author Bulat
- **/
+ * @author Magento
+ */
 -->
 <config>
     <modules>
         <Magentostudy_News>
             <active>true</active>
-            <codePool>local</codePool>
+            <codePool>community</codePool>
             <depends>
-                <Mage_Adminhtml/>
+                <Mage_Adminhtml />
             </depends>
         </Magentostudy_News>
     </modules>
