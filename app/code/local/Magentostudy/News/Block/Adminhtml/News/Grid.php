@@ -119,7 +119,10 @@ class Magentostudy_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_W
             'options'  => array(
                 Magentostudy_News_Model_News::STATUS_ENABLED  => Mage::helper('magentostudy_news')->__('Enabled'),
                 Magentostudy_News_Model_News::STATUS_DISABLED => Mage::helper('magentostudy_news')->__('Disabled'),
-            )
+            ),
+            'renderer' => new Magentostudy_News_Block_Adminhtml_News_Renderer_Color(),
+//            'frame_callback' => [$this, '_formatCell']   // Problems  \lib\Varien\Object.php on line 653
+
         ));
 
         $this->addColumn('action',
@@ -160,4 +163,14 @@ class Magentostudy_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_W
     {
         return $this->getUrl('*/*/grid', array('_current' => true));
     }
+
+    /**
+     * Realize colored output
+     */
+//    protected function _formatCell($value)
+//    {
+//        $value =  $row->getData($column->getIndex());
+//        return '<div style="color:#FFF;font-weight:bold;background:#F55804;border-radius:8px;width:100%">'.$value.'</div>';
+//        return 111;
+//    }
 }
