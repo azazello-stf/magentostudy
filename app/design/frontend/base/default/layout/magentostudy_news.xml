@@ -2,18 +2,17 @@
 <!--
 /**
  * Magento frontend layout
+ *
  * @author Bulat
  */
 -->
 <layout version="0.1.0">
     <default>
         <reference name="footer_links">
-            <action method="addLink" translate="label title"
-                    module="magentostudy_news"
-                    ifconfig="news/view/enabled">
+            <action method="addLink" translate="label title" module="magentostudy_news" ifconfig="news/view/enabled">
                 <label>News</label>
                 <url>news</url>
-                <title>News title</title>
+                <title>News</title>
                 <prepare>true</prepare>
             </action>
         </reference>
@@ -25,13 +24,13 @@
             <action method="setTemplate">
                 <template>page/2columns-right.phtml</template>
             </action>
-            <action method="setHeaderTitle" translat="title" module="magentostudy_news">
+            <action method="setHeaderTitle" translate="title" module="magentostudy_news">
                 <title>Site News</title>
             </action>
         </reference>
         <reference name="content">
             <block type="magentostudy_news/list" name="news.list" template="magentostudy/news/list.phtml">
-                <block type="page/html_pager" name="news.list.pager" as="news_list_pager"/>
+                <block type="page/html_pager" name="news.list.pager" as="news_list_pager" />
             </block>
         </reference>
     </magentostudy_news_index_index>
@@ -44,7 +43,7 @@
             </action>
         </reference>
         <reference name="content">
-            <block type="magentostudy_news/news" name="news.item" template="magentostudy/news/item.phtml"/>
+            <block type="magentostudy_news/item" name="news.item" template="magentostudy/news/item.phtml" />
         </reference>
     </magentostudy_news_index_view>
 </layout>

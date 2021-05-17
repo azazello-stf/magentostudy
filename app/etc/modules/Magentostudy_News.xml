@@ -3,14 +3,14 @@
 /**
  * Module initial config
  *
- * @author Magento
+ * @author Bulat
  */
 -->
 <config>
     <modules>
         <Magentostudy_News>
             <active>true</active>
-            <codePool>community</codePool>
+            <codePool>local</codePool>
             <depends>
                 <Mage_Adminhtml />
             </depends>

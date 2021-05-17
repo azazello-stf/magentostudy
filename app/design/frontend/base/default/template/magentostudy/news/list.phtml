@@ -10,37 +10,30 @@
  * @see Magentostudy_News_Block_List
  */
 ?>
-
-<div id="news_list_messages">
-    <?php echo $this->getMessagesBlock()->getGroupedHtml()?>
-</div>
-<div>
-    <h1><?php echo Mage::helper('magentostudy_news')->__('Site News')?></h1>
+<div id="news_list_messages"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="page-title">
+    <h1><?php echo Mage::helper('magentostudy_news')->__('Site News') ?></h1>
 </div>
 
-<div>
-    <?php foreach($this->getCollection() as $newsItem):?>
-        <div id="item_<?php echo $newsItem->getId()?>">
+<div class="news_list_view">
+    <?php foreach ($this->getCollection() as $newsItem): ?>
+        <div id="item_<?php echo $newsItem->getId() ?>" class="news_list_item">
             <h2>
-                <a href="<?php echo $this->getItemUrl($newsItem)?>">
-                    <?php echo $this->escapeHtml($newsItem->getTitle())?>
+                <a href="<?php echo $this->getItemUrl($newsItem) ?>">
+                    <?php echo $this->escapeHtml($newsItem->getTitle()) ?>
                 </a>
             </h2>
 
-            <div>
-                <?php echo $this->formatDate($newsItem->getTimePublished(), 'medium')?> |
-                <?php echo $this->escapeHtml($newsItem->getAuthor())?>
+            <div class="news_item_subtitle">
+                <?php echo $this->formatDate($newsItem->getTimePublished(), 'medium') ?> |
+                <?php echo $this->escapeHtml($newsItem->getAuthor()) ?>
             </div>
 
-            <?php if($imageUrl = $this->getImageUrl($newsItem, 100)):?>
-                <p>
-                    <img src="<?php echo $imageUrl?>"
-                         alt="<?php echo $this->escapeHtml($newsItem->getTitle())?>"
-
-                </p>
-            <?endif;?>
+            <?php if ($imageUrl = $this->getImageUrl($newsItem, 100)): ?>
+               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($newsItem->getTitle()); ?>" /></p>
+            <?php endif; ?>
         </div>
-    <?endforeach;?>
+    <?php endforeach; ?>
 </div>
 
-<?php echo $this->getPager()?>
+<?php echo $this->getPager() ?>
