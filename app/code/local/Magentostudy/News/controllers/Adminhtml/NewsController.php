@@ -213,6 +213,87 @@ class Magentostudy_News_Adminhtml_NewsController extends Mage_Adminhtml_Controll
         $this->_redirect('*/*/');
     }
 
+
+    /**
+     * Mass delete action
+     */
+    public function massDeleteAction()
+    {
+        $news_ids = $this->getRequest()->getParam('news');
+        if (!is_array($news_ids)) {
+            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select item(s)'));
+        } else {
+            try {
+                foreach ($news_ids as $id) {
+                    $news = Mage::getModel('magentostudy_news/news')->load($id);
+                    $news->delete();
+                }
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('adminhtml')->__('Total of %d record(s) were successfully deleted',
+                        count($news_ids))
+                );
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+
+    /**
+     * Mass enable action
+     */
+    public function massStatusEnableAction()
+    {
+        $news_ids = $this->getRequest()->getParam('news');
+        if (!is_array($news_ids)) {
+            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select item(s)'));
+        } else {
+            try {
+                foreach ($news_ids as $id) {
+                    $news = Mage::getModel('magentostudy_news/news')->load($id);
+                    $news->status = Magentostudy_News_Model_News::STATUS_ENABLED;
+                    $news->save();
+                }
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('adminhtml')->__('Total of %d record(s) were successfully enabled',
+                        count($news_ids))
+                );
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+
+    /**
+     * Mass disable action
+     */
+    public function massStatusDisableAction()
+    {
+        $news_ids = $this->getRequest()->getParam('news');
+        if (!is_array($news_ids)) {
+            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('adminhtml')->__('Please select item(s)'));
+        } else {
+            try {
+                foreach ($news_ids as $id) {
+                    $news = Mage::getModel('magentostudy_news/news')->load($id);
+                    $news->status = Magentostudy_News_Model_News::STATUS_DISABLED;
+                    $news->save();
+                }
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('adminhtml')->__('Total of %d record(s) were successfully disabled',
+                        count($news_ids))
+                );
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
+
     /**
      * Check the permission to run it
      *

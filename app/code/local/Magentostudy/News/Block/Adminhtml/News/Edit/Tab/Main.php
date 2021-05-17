@@ -40,6 +40,19 @@ class Magentostudy_News_Block_Adminhtml_News_Edit_Tab_Main
             ));
         }
 
+        $fieldset->addField('status', 'select', array(
+            'name'     => 'status',
+            'label'    => Mage::helper('magentostudy_news')->__('Status'),
+            'title'    => Mage::helper('magentostudy_news')->__('Status'),
+            'required' => true,
+            'values'   => array(
+                Magentostudy_News_Model_News::STATUS_ENABLED  => Mage::helper('magentostudy_news')->__('Enabled'),
+                Magentostudy_News_Model_News::STATUS_DISABLED => Mage::helper('magentostudy_news')->__('Disabled'),
+            ),
+            'value'    => Magentostudy_News_Model_News::STATUS_ENABLED,
+            'disabled' => $isElementDisabled
+        ));
+
         $fieldset->addField('title', 'text', array(
             'name'     => 'title',
             'label'    => Mage::helper('magentostudy_news')->__('News Title'),

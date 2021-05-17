@@ -33,6 +33,37 @@ class Magentostudy_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_W
         return parent::_prepareCollection();
     }
 
+
+    /**
+     * Add mass action to grid
+     *
+     * @return $this|Magentostudy_News_Block_Adminhtml_News_Grid
+     */
+    protected function _prepareMassaction()
+    {
+        $this->setMassactionIdField('news_action');
+        $this->getMassactionBlock()->setFormFieldName('news');
+
+        $this->getMassactionBlock()->addItem('delete', array(
+            'label'=> Mage::helper('magentostudy_news')->__('Delete'),
+            'url'  => $this->getUrl('*/*/massDelete', array('' => '')),        // public function massDeleteAction() in Mage_Adminhtml_Tax_RateController
+            'confirm' => Mage::helper('magentostudy_news')->__('Are you sure?')
+        ));
+
+        $this->getMassactionBlock()->addItem('status_enable', array(
+            'label' => Mage::helper('magentostudy_news')->__('Enable'),
+            'url' => $this->getUrl('*/*/massStatusEnable'),
+        ));
+
+        $this->getMassactionBlock()->addItem('status_disable', array(
+            'label' => Mage::helper('magentostudy_news')->__('Disable'),
+            'url' => $this->getUrl('*/*/massStatusDisable'),
+        ));
+
+        return $this;
+    }
+
+
     /**
      * Prepare Grid columns
      *
@@ -40,6 +71,13 @@ class Magentostudy_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_W
      */
     protected function _prepareColumns()
     {
+//        $this->addColumn('news_action', array(
+//            'width' => '20px',
+//            'index' => 'news_action',
+//            'type' => 'number',
+//            'escape' => true,
+//        ));
+
         $this->addColumn('news_id', array(
             'header'    => Mage::helper('magentostudy_news')->__('ID'),
             'width'     => '50px',
@@ -70,6 +108,18 @@ class Magentostudy_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_W
             'width'    => '170px',
             'index'    => 'created_at',
             'type'     => 'datetime',
+        ));
+
+        $this->addColumn('status', array(
+            'header'   => Mage::helper('magentostudy_news')->__('Status'),
+            'sortable' => true,
+            'width'    => '90px',
+            'index'    => 'status',
+            'type'     => 'options',
+            'options'  => array(
+                Magentostudy_News_Model_News::STATUS_ENABLED  => Mage::helper('magentostudy_news')->__('Enabled'),
+                Magentostudy_News_Model_News::STATUS_DISABLED => Mage::helper('magentostudy_news')->__('Disabled'),
+            )
         ));
 
         $this->addColumn('action',

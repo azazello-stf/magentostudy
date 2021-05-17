@@ -31,7 +31,7 @@ class Magentostudy_News_Block_List
     public function getCollection()
     {
         if(is_null($this->_newsCollection)){
-            $this->_newsCollection = $this->_getCollection();
+            $this->_newsCollection = $this->_getCollection()->addFieldToFilter('status', Magentostudy_News_Model_News::STATUS_ENABLED);
             $this->_newsCollection->prepareForList($this->getCurrentPage());
         }
 

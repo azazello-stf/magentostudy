@@ -6,6 +6,9 @@
  */
 class Magentostudy_News_Model_News extends Mage_Core_Model_Abstract
 {
+    const STATUS_ENABLED = 1;
+    const STATUS_DISABLED = 2;
+
     /**
      * Define resource model
      */
@@ -26,5 +29,19 @@ class Magentostudy_News_Model_News extends Mage_Core_Model_Abstract
             $this->setData('created_at', Varien_Date::now());
         }
         return $this;
+    }
+
+
+    /**
+     * Get product status
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        if (is_null($this->_getData('status'))) {
+            $this->setData('status', self::STATUS_ENABLED);
+        }
+        return $this->_getData('status');
     }
 }
