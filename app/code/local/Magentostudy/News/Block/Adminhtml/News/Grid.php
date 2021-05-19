@@ -125,6 +125,16 @@ class Magentostudy_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_W
 
         ));
 
+//        $this->addColumn('store', array(
+//            'header' => 'Website',
+//            'index' => 'store',
+//            'type' => 'store',
+//            'width' => '100px',
+//            'store_view'=> true,
+//            'display_deleted' => false,
+//            'renderer' => 'Namespace_Modulename_Block_Adminhtml_Store',
+//        ));
+
         $this->addColumn('action',
             array(
                 'header'    => Mage::helper('magentostudy_news')->__('Action'),

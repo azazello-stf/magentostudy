@@ -78,6 +78,21 @@ class Magentostudy_News_Block_Adminhtml_News_Edit_Tab_Main
             'required' => true
         ));
 
+        if (!Mage::app()->isSingleStoreMode()){
+            $fieldset->addField('stores', 'multiselect', array(
+                'name'      => 'stores[]',
+                'label'     => Mage::helper('magentostudy_news')->__('Select Store'),
+                'title'     => Mage::helper('magentostudy_news')->__('Select Store'),
+                'required'  => true,
+                'values'    => Mage::getSingleton('adminhtml/system_store')->getStoreValuesForForm(true, true),
+            ));
+        }else {
+            $fieldset->addField('stores', 'text', array(
+                'name'      => 'stores[]',
+                'value'     => Mage::app()->getStore(true)->getId()
+            ));
+        }
+
         Mage::dispatchEvent('adminhtml_news_edit_tab_main_prepare_form', array('form' => $form));
 
         $form->setValues($model->getData());
